@@ -1,25 +1,25 @@
 package entidades;
 
 public abstract class Produto {
-	private int id;
+	private String codigo;
 	private double preco;
 	private int quantidade;
 	
 	public Produto() {
 	}
 
-	public Produto(int id, double preco, int quantidade) {
-		this.id = id;
+	public Produto(String codigo, double preco, int quantidade) {
+		this.codigo = codigo;
 		this.preco = preco;
 		this.quantidade = quantidade;
 	}
 
-	public int getId() {
-		return id;
+	public String getCodigo() {
+		return codigo;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
 
 	public double getPreco() {
@@ -39,5 +39,7 @@ public abstract class Produto {
 	}
 	
 	public abstract double calcularFrete();
+	
+	
 	
 }

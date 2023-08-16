@@ -4,11 +4,14 @@ import java.util.Optional;
 
 import basedados.Banco;
 import entidades.Cliente;
+import utilidade.LeitoraDados;
+
 
 
 public class ClienteNegocio {
 
 	private Banco bancoDados;
+
 	
 	
 	public ClienteNegocio() {
@@ -33,22 +36,22 @@ public class ClienteNegocio {
 		return false;
 	}
 	
-	public Optional<Cliente> consultar(String cpf){
-		for (Cliente cliente: bancoDados.getClientes()) {
-			if(cliente.getCpf().equals(cpf)) {
-				return Optional.of(cliente);
-			}
-		}
-		return Optional.empty();
-	}
 	
-	public void CadastrarNovoCliente(Cliente cliente) {
-		if (verificaCpf(cliente.getCpf())) {
-			System.out.println("Cpf já cadastrado!");
-		} else {
-			bancoDados.adicionarCliente(cliente);
-		}
-	}
+	public void CadastrarNovoCliente() {
+		System.out.printf("Digite o Cpf: ");
+		String cpf = LeitoraDados.lerDado();
+    	System.out.printf("Digite o nome: ");
+    	String nome = LeitoraDados.lerDado();
+    	if (bancoDados.getClientes().isEmpty()){
+    		bancoDados.adicionarCliente(new Cliente(nome, cpf));
+    	} else if(!bancoDados.getClientes().isEmpty() && verificaCpf(cpf)){
+    		System.out.println("Cliente já cadastrado!");
+    	} else {
+    		bancoDados.adicionarCliente(new Cliente(nome, cpf));
+    	}
+    	}
+	
+	
 	
 	public void excluirCliente(String cpf) {
 		int posicao = -1;
@@ -59,6 +62,28 @@ public class ClienteNegocio {
 			}
 		}
 	}
+
+
+	public Optional<Cliente> consultar(String cpf) {
+		for (Cliente cliente:bancoDados.getClientes()) {
+			if(cliente.getCpf().equals(cpf)) {
+				return Optional.of(cliente);
+			}
+		}
+		return Optional.empty();
+	}
+
+
+	public void listarClientes() {
+		if (bancoDados.getClientes().isEmpty()) {
+			System.out.println("Não há clientes cadastrados!");
+		} else {
+			for (Cliente cliente:bancoDados.getClientes()) {
+				System.out.println(cliente);
+			}
+	
+		}
+		}
 	
 }
 	

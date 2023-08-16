@@ -6,6 +6,7 @@ public class Cliente {
 	
 	public Cliente() {
 	}
+	
 
 	public Cliente(String nome, String cpf) {
 		this.nome = nome;
@@ -26,6 +27,11 @@ public class Cliente {
 
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
+	}
+
+	@Override
+	public String toString() {
+		return "Cliente [nome=" + nome + ", cpf=" + cpf + "]";
 	}
 
 }

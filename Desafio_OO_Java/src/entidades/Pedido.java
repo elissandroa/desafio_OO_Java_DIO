@@ -13,8 +13,7 @@ public class Pedido {
 	public Pedido() {
 	}
 
-	public Pedido(String codigo, Cliente cliente, List<Produto> produtos, double total) {
-		this.codigo = codigo;
+	public Pedido(Cliente cliente, List<Produto> produtos, double total) {
 		this.cliente = cliente;
 		this.produtos = produtos;
 		this.total = total;
