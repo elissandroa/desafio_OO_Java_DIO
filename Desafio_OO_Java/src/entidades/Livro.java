@@ -28,4 +28,10 @@ public class Livro extends Produto {
 		this.genero = genero;
 	}
 
+	@Override
+	public double calcularFrete() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

@@ -1,6 +1,6 @@
 package entidades;
 
-public class Produto {
+public abstract class Produto {
 	private int id;
 	private double preco;
 	private int quantidade;
@@ -37,5 +37,7 @@ public class Produto {
 	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
 	}
+	
+	public abstract double calcularFrete();
 	
 }

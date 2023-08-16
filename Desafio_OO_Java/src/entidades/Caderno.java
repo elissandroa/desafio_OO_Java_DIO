@@ -17,5 +17,11 @@ public class Caderno extends Produto{
 	public void setTipo(Materiais tipo) {
 		this.tipo = tipo;
 	}
+
+	@Override
+	public double calcularFrete() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 }
