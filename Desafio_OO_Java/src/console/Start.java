@@ -186,8 +186,9 @@ public class Start {
             System.out.println("Usuário não cadastrado.");
             System.out.println("Deseja Cadastrar um Cliente ?: (s/n):");
             String option = LeitoraDados.lerDado();
-            if (option == "s" || option == "S") {
-            	clienteLogado = new Cliente();
+            if (option.equals("s") || option.equals("S")) {
+            	clienteNegocio.CadastrarNovoCliente();
+            	Start.main(null);
             }
             else {
             	System.out.println("Acesso negado, programa fechado...");
