@@ -56,11 +56,7 @@ public class ProdutoNegocio {
 		
 	}
 
-	public void listarPedidos() {
-		// TODO Auto-generated method stub
-		
-	}
-
+	
 	public void salvarCaderno() {
 		System.out.println("**************************************************************");
 		System.out.printf("Digite a quantidade de matérias: ");
@@ -113,12 +109,16 @@ public class ProdutoNegocio {
 		}
 	}
 	
-	public void consultarCaderno() {
-		System.out.println("Lista de Cadernos");
+	public Optional<Caderno> consultarCaderno() {
+		System.out.printf("Digite o código do caderno: ");
+		String codigoCaderno = LeitoraDados.lerDado();
 		for (Caderno caderno: bancoDados.getCadernos()) {
-			System.out.println(caderno);
+			if (caderno.getCodigo().equals(codigoCaderno)) {
+				System.out.println(caderno);
+				return Optional.of(caderno);
+			}
 		}
-		
+		return Optional.empty();
 	}
 	
 	public Optional<Livro> consultarLivro() {

@@ -18,7 +18,7 @@ public class Banco {
 	private List<Cupom> cupons;
 	private List<Cliente> clientes = new ArrayList<Cliente>();
 	private List<Produto> produtos = new ArrayList<Produto>();
-
+	
 	public Banco() {
 	}
 

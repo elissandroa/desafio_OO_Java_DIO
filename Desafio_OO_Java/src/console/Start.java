@@ -7,9 +7,7 @@ import Negocio.PedidoNegocio;
 import Negocio.ProdutoNegocio;
 import basedados.Banco;
 import entidades.Cliente;
-import entidades.Cupom;
 import entidades.Livro;
-import entidades.Pedido;
 import utilidade.LeitoraDados;
 
 public class Start {
@@ -29,6 +27,7 @@ public class Start {
     	
     	
 
+    	
         System.out.println("Bem vindo ao e-Compras");
 
         String opcao = "";
@@ -95,8 +94,7 @@ public class Start {
             System.out.println("10 - Listar produtos");
             System.out.println("11 - Listar pedidos");
             System.out.println("12 - Deslogar");
-            System.out.println("13 - Voltar menu inicial");
-            System.out.println("14 - Sair");
+            System.out.println("13 - Sair");
             System.out.println("**************************************************************");
             opcao = LeitoraDados.lerDado();
 
@@ -123,42 +121,32 @@ public class Start {
                 	produtoNegocio.excluirCaderno(codigoCaderno);
                 	break;
                 case "6":
+                	System.out.println("Consultar Caderno");
                 	produtoNegocio.consultarCaderno();
                 	break;
                 case "7":
-                    Pedido pedido = LeitoraDados.lerPedido(banco);
-                    Optional<Cupom> cupom = LeitoraDados.lerCupom(banco);
-
-                    if (cupom.isPresent()) {
-                        pedidoNegocio.salvar(pedido);
-                    } else {
-                        pedidoNegocio.salvar(pedido);
-                    }
+                    pedidoNegocio.adicionarNovoPedido();
                     break;
                 case "8":
-                    System.out.println("Digite o código do pedido");
+                    System.out.printf("Digite o código do pedido: ");
                     String codigoPedido = LeitoraDados.lerDado();
-                    pedidoNegocio.excluir(codigoPedido);
+                    pedidoNegocio.excluirPedido(codigoPedido);
                     break;
                 case "9":
-                	System.out.println("Cunsultar Pedido");
+                	pedidoNegocio.consultarPedido();
                 	break;
                 case "10":
                     produtoNegocio.listarProdutos();
                     break;
                 case "11":
-                    produtoNegocio.listarPedidos();
+                    pedidoNegocio.listarPedidos();
                     break;
                 case "12":
                     System.out.println(String.format("Volte sempre %s!", clienteLogado.getNome()));
                     clienteLogado = null;
+                    main(args);
                     break;
                 case "13":
-                	System.out.println("Voltar para menu Inicial");
-                	clienteLogado = null;
-                	main(args);
-                	break;
-                case "14":
                     System.out.println("Aplicação encerrada.");
                     System.exit(0);
                     break;	
@@ -169,7 +157,11 @@ public class Start {
         }
     }
 
-    /**
+    public static Cliente getClienteLogado() {
+		return clienteLogado;
+	}
+
+	/**
      * Procura o usuário na base de dados.
      * @param cpf CPF do usuário que deseja logar na aplicação
      */

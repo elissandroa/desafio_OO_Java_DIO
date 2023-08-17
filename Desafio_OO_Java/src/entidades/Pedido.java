@@ -15,14 +15,16 @@ public class Pedido {
 	public Pedido() {
 	}
 
-	public Pedido(Cliente cliente, List<Produto> produtos, double total, Cupom cupom) {
+	public Pedido(String codigo, Cliente cliente, List<Produto> produtos, double total, Cupom cupom) {
+		this.codigo = codigo;
 		this.cliente = cliente;
 		this.produtos = produtos;
 		this.total = total;
 		this.cupom = cupom;
 	}
 	
-	public Pedido(Cliente cliente, List<Produto> produtos, double total) {
+	public Pedido(String codigo, Cliente cliente, List<Produto> produtos, double total) {
+		this.codigo = codigo;
 		this.cliente = cliente;
 		this.produtos = produtos;
 		this.total = total;
@@ -65,6 +67,7 @@ public class Pedido {
 		this.cupom = cupom;
 	}
 
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(codigo);
@@ -84,7 +87,7 @@ public class Pedido {
 
 	@Override
 	public String toString() {
-		return "Pedido [codigo=" + codigo + ", cliente=" + cliente + ", produtos=" + produtos + ", total=" + total
+		return "Pedido [codigo=" + codigo + " cliente=" + cliente + " \n produtos=" + produtos + " total=" + total
 				+ "]";
 	}
 	
