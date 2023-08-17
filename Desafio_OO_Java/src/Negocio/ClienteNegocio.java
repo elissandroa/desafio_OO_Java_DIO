@@ -72,9 +72,23 @@ public class ClienteNegocio {
 		}
 		return Optional.empty();
 	}
+	
+	public Optional<Cliente> consultarCliente(){
+		System.out.printf("Digite o Cpf: ");
+		String cpf = LeitoraDados.lerDado();
+		for (Cliente cliente: bancoDados.getClientes()) {
+			if(cliente.getCpf().equals(cpf)) {
+				System.out.println(cliente);
+				return Optional.of(cliente);
+			} 
+		}
+		System.out.println("Cliente não cadastrado !");
+		return Optional.empty();
+	}
 
 
 	public void listarClientes() {
+		System.out.println("****************Lista de Clientes Cadastrados*****************");
 		if (bancoDados.getClientes().isEmpty()) {
 			System.out.println("Não há clientes cadastrados!");
 		} else {
@@ -83,6 +97,7 @@ public class ClienteNegocio {
 			}
 	
 		}
+		System.out.println("**************************************************************");
 		}
 	
 }

@@ -1,7 +1,7 @@
 package entidades;
 
 public abstract class Produto {
-	private String codigo;
+	protected String codigo;
 	private double preco;
 	private int quantidade;
 	
@@ -39,7 +39,11 @@ public abstract class Produto {
 	}
 	
 	public abstract double calcularFrete();
-	
-	
+
+	@Override
+	public String toString() {
+		return "Produto [codigo=" + codigo + ", preco=" + preco + ", quantidade=" + quantidade + "]";
+	}
+
 	
 }

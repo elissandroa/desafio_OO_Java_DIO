@@ -9,14 +9,24 @@ public class Pedido {
 	private Cliente cliente;
 	private List<Produto> produtos = new ArrayList<Produto>();
 	private double total;
+	private Cupom cupom;
+	
 	
 	public Pedido() {
 	}
 
+	public Pedido(Cliente cliente, List<Produto> produtos, double total, Cupom cupom) {
+		this.cliente = cliente;
+		this.produtos = produtos;
+		this.total = total;
+		this.cupom = cupom;
+	}
+	
 	public Pedido(Cliente cliente, List<Produto> produtos, double total) {
 		this.cliente = cliente;
 		this.produtos = produtos;
 		this.total = total;
+		this.cupom = null;
 	}
 
 	public String getCodigo() {
@@ -45,6 +55,14 @@ public class Pedido {
 
 	public List<Produto> getProdutos() {
 		return produtos;
+	}
+	
+	public Cupom getCupom() {
+		return cupom;
+	}
+
+	public void setCupom(Cupom cupom) {
+		this.cupom = cupom;
 	}
 
 	@Override

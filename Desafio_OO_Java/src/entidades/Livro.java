@@ -7,10 +7,14 @@ public class Livro extends Produto {
 	public Livro() {
 	}
 
-	public Livro(String nome, Genero genero) {
+	
+	public Livro(String codigo, double preco, int quantidade, String nome, Genero genero) {
+		super(codigo, preco, quantidade);
 		this.nome = nome;
 		this.genero = genero;
 	}
+
+
 
 	public String getNome() {
 		return nome;
@@ -32,6 +36,11 @@ public class Livro extends Produto {
 	public double calcularFrete() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public String toString() {
+		return "Livro [Codigo = "+ codigo + " Nome= " + nome + ", Genero= " + genero + "]";
 	}
 
 }

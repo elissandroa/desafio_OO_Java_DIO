@@ -1,20 +1,23 @@
 package entidades;
 
 public class Caderno extends Produto{
-	private Materiais tipo;
+	private int tipo;
 
 	public Caderno() {
 	}
+	
 
-	public Caderno(Materiais tipo) {
+	public Caderno(String codigo, double preco, int quantidade, int tipo) {
+		super(codigo, preco, quantidade);
 		this.tipo = tipo;
 	}
 
-	public Materiais getTipo() {
+
+	public int getTipo() {
 		return tipo;
 	}
 
-	public void setTipo(Materiais tipo) {
+	public void setTipo(int tipo) {
 		this.tipo = tipo;
 	}
 
@@ -22,6 +25,11 @@ public class Caderno extends Produto{
 	public double calcularFrete() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public String toString() {
+		return "Caderno [ Código= " +codigo+" "+" tipo= " + tipo + " matérias ]";
 	}
 	
 }
